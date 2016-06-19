@@ -7,7 +7,7 @@ import org.test.repository.BoardRepository;
 /**
  * Created by filipemiranda on 6/19/16.
  */
-@Component
+//@Component
 public class MockedCachedBoardRepository implements BoardRepository {
     private static Board b;
 
@@ -20,5 +20,10 @@ public class MockedCachedBoardRepository implements BoardRepository {
     @Override
     public Board readBoard() {
         return b;
+    }
+
+    @Override
+    public void delete() {
+        b = null;
     }
 }
