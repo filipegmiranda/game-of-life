@@ -1,5 +1,10 @@
 package org.test.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
 /**
  * Created by filipemiranda on 6/17/16.
  * - Any live cell with fewer than two live neighbours dies, as if caused by under-population.
@@ -7,14 +12,15 @@ package org.test.model;
  * - Any live cell with more than three live neighbours dies, as if by over-population.
  * - Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
  */
-public class Cell {
+public class Cell implements Serializable{
 
     private final static Cell LIVE_CELL = new Cell(State.LIVE);
     private final static Cell DEAD_CELL = new Cell(State.DEAD);
 
     private final State state;
 
-    private Cell(State state) {
+    @JsonCreator
+    private Cell(@JsonProperty("state") State state) {
         this.state = state;
     }
 
